@@ -1,14 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router';
-import SearchPage from "../pages/search_page/SearchPage";
-import { ListingPage } from "../pages/property_listing_page/ListingPage";
-import DetailsPage from "../pages/property_details_page/DetailsPage";
-import FavouritesPage from "../pages/favourites_page/FavouritesPage";
+import SearchPage from "../SearchPage/SearchPage";
+import ListingPage from "../PropertyListingPage/ListingPage";
+import DetailsPage from "../PropertyDetailsPage/DetailsPage";
+import FavouritesPage from "../FavouritesPage/FavouritesPage";
 import './App.css';
 
-class App extends Component {
-  
-  render() {
+const App = () => {
     return (
       <div className='wrapper-app'>
         <Switch>
@@ -19,7 +17,6 @@ class App extends Component {
         </Switch>
       </div>
     )
-  }
-}
+};
 
 export default App

@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class DetailsPage extends Component {
-  
-  render() {
+const DetailsPage = () => {
     return (
       <div>
         <h1>Details Page</h1>
       </div>
     )
-  }
 }
 
 export default DetailsPage
