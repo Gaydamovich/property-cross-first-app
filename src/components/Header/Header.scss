@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 15px;
+  background-color: #3c3c48;
+  box-sizing: border-box;
+  &__title {
+    color: #e4e4e4;
+    font-size: 1.2rem;
+  }
+  &__btn {
+    padding: 4px 20px;
+    background-color: #49c4e4;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: .3rem;
+    border: none;
+    &:hover {
+      cursor: pointer;
+      background-color: #10afe4;
+    }
+  }
+}
