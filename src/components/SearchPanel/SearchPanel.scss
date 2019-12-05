@@ -1,0 +1,42 @@
+.search {
+  padding: 60px;
+  text-align: center;
+  background-color: #d9d9d9;
+  &__title {
+    color: #434343;
+    margin: 0;
+  }
+  &__instruction {
+    color: #585858;
+  }
+  &__entry-field {
+    width: 30%;
+    font-size: 1.2rem;
+  }
+  .wrapper-btn {
+    margin-top: 1rem;
+  }
+  &__btn {
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    border-radius: .2rem;
+    outline: none;
+    border: none;
+    &_go {
+      background-color: rgb(69, 150, 53);
+      margin-right: .7rem;
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(82, 179, 63);
+      }
+    }
+    &_location {
+      background-color: rgb(12, 84, 216);
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(14, 98, 251);
+      }
+    }
+  }
+}
