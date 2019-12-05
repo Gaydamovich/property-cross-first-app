@@ -20,4 +20,4 @@ const SearchPanel = () => {
   )
 };
 
-export default SearchPanel
+export default SearchPanel;
