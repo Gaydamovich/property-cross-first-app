@@ -2,7 +2,7 @@ import React from 'react';
 import './SearchPanel.scss';
 
 
-const SearchPanel = () => {
+const SearchPanel = ({ entryField, onChangeField }) => {
   return (
     <div className='search'>
       <h1 className='search__title'>Search</h1>
@@ -11,7 +11,10 @@ const SearchPanel = () => {
         You can search by place-name or click 'My location',
         to search in your current location!
       </p>
-      <input className='search__entry-field' type="text"/>
+      <input className='search__entry-field'
+             type="text"
+             onChange={ (event) => onChangeField(event.target.value) }
+             value={ entryField }/>
       <div className='wrapper-btn'>
         <button  className='search__btn search__btn_go' id='go'>GO</button>
         <button  className='search__btn search__btn_location' id='myLocation'>My location</button>

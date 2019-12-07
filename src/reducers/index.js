@@ -1,32 +1,42 @@
 const initialState = {
-  houses: [
+  searchStatus: false,
+  entryField: '',
+  localStorageSave: [
     {
       id: 1,
-      street: 'default',
-      price: '200',
+      city: 'London',
+      street: 'Piccadilly'
     },
     {
       id: 2,
-      street: 'default',
-      price: '300',
+      city: 'London',
+      street: 'Oxford Street'
     },
     {
       id: 3,
-      street: 'default',
-      price: '500',
-    },
-    //...
+      city: 'London',
+      street: 'Baker Street'
+    }
   ]
-}
+  
+};
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_HOSES':
+    case 'ADD_LOCALITY_TO_FIELD':
       return {
-        houses: action.payload
+        ...state,
+        entryField: `${action.city}, ${action.street}`
       };
+    case 'CHANGE_FIELD':
+      return {
+        ...state,
+        entryField: action.payload
+      };
+    case 'GET_LOCAL_STORAGE':
+      return state;
     default:
-      return state
+      return state;
   }
 };
 
