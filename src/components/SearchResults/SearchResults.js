@@ -1,15 +1,13 @@
 import React from 'react';
 import './SearchResults.scss';
-import { SearchResultsItem } from "../SearchResultsItem/SearchResultsItem";
+import { SearchResultsItem } from "./SearchResultsItem";
 
 
 export const SearchResults = props => {
   const { recentSearches , searchStatus, onClickItem} = props;
   
   const history = recentSearches.map( item => {
-    const clickItem = () => onClickItem(item.city, item.street);
-    
-    return <SearchResultsItem key={item.id} clickItem={ clickItem } item={item}/>
+    return <SearchResultsItem key={item.id} onClickItem={onClickItem} item={item}/>
   });
   
   return (

@@ -4,7 +4,7 @@ import './SearchPanel.scss';
 
 export const SearchPanel = ({ entryField, onChangeField }) => {
   
-  const ChangeField = (event) => {
+  const changeField = (event) => {
     onChangeField(event.target.value)
   };
   
@@ -18,7 +18,7 @@ export const SearchPanel = ({ entryField, onChangeField }) => {
       </p>
       <input className='search__entry-field'
              type="text"
-             onChange={ChangeField}
+             onChange={changeField}
              value={entryField}/>
       <div className='wrapper-btn'>
         <button  className='search__btn search__btn_go' id='go'>GO</button>

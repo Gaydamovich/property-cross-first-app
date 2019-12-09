@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { addLocalityToField, changeField } from "../actions/searchPageActions";
 import { SearchPage } from "../components/SearchPage/SearchPage";
 
-
-
-class SearchPageContainer extends Component{
-  
-  render() {
-    const { searchPage, addLocalityToField, changeField } = this.props;
+const SearchPageContainer = props => {
+  const { searchPage, addLocalityToField, changeField } = props;
     
-    const onClickItem = (city, street) => addLocalityToField(city, street);
-    const onChangeField = (value) => changeField(value);
+  const onClickItem = (city, street) => addLocalityToField(city, street);
+  const onChangeField = (value) => changeField(value);
     
-    return <SearchPage
-      recentSearches={searchPage.recentSearches}
-      searchStatu={searchPage.searchStatus}
-      entryField={searchPage.entryField}
-      onClickItem={onClickItem}
-      onChangeField={onChangeField}
-    />
-  }
-}
+  return <SearchPage
+    recentSearches={searchPage.recentSearches}
+    searchStatu={searchPage.searchStatus}
+    entryField={searchPage.entryField}
+    onClickItem={onClickItem}
+    onChangeField={onChangeField}
+  />
+};
 
 
 const mapStateToProps = state => {
@@ -30,9 +25,6 @@ const mapStateToProps = state => {
   }
 };
 
-const mapDispatchToProps = {
-  addLocalityToField: addLocalityToField,
-  changeField: changeField,
-};
+const mapDispatchToProps = { addLocalityToField, changeField };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPageContainer)

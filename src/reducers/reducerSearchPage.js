@@ -1,4 +1,4 @@
-import { ADD_LOCALITY_TO_FIELD, CHANGE_FIELD } from "../actions/actionsTypes/actionsTypes";
+import { ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, CHANGE_FIELD_SEARCH_PAGE } from "../actions/actionsTypes/actionsTypes";
 
 const initialState = {
   searchStatus: true,
@@ -25,12 +25,12 @@ const initialState = {
 
 const searchPage = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_LOCALITY_TO_FIELD:
+    case ADD_LOCALITY_TO_FIELD_SEARCH_PAGE:
       return {
         ...state,
         entryField: `${action.city}, ${action.street}`
       };
-    case CHANGE_FIELD:
+    case CHANGE_FIELD_SEARCH_PAGE:
       return {
         ...state,
         entryField: action.payload

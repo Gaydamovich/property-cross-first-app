@@ -1,13 +1,13 @@
 import {
-  ADD_LOCALITY_TO_FIELD,
-  CHANGE_FIELD
+  ADD_LOCALITY_TO_FIELD_SEARCH_PAGE,
+  CHANGE_FIELD_SEARCH_PAGE
 } from "./actionsTypes/actionsTypes";
 
 
 
 export const addLocalityToField = (city, street) => {
   return {
-    type: ADD_LOCALITY_TO_FIELD,
+    type: ADD_LOCALITY_TO_FIELD_SEARCH_PAGE,
     city,
     street
   }
@@ -15,7 +15,7 @@ export const addLocalityToField = (city, street) => {
 
 export const changeField = (value) => {
   return {
-    type: CHANGE_FIELD,
+    type: CHANGE_FIELD_SEARCH_PAGE,
     payload: value
   }
 };
