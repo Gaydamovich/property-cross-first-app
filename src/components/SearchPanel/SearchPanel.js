@@ -2,7 +2,12 @@ import React from 'react';
 import './SearchPanel.scss';
 
 
-const SearchPanel = ({ entryField, onChangeField }) => {
+export const SearchPanel = ({ entryField, onChangeField }) => {
+  
+  const ChangeField = (event) => {
+    onChangeField(event.target.value)
+  };
+  
   return (
     <div className='search'>
       <h1 className='search__title'>Search</h1>
@@ -13,8 +18,8 @@ const SearchPanel = ({ entryField, onChangeField }) => {
       </p>
       <input className='search__entry-field'
              type="text"
-             onChange={ (event) => onChangeField(event.target.value) }
-             value={ entryField }/>
+             onChange={ChangeField}
+             value={entryField}/>
       <div className='wrapper-btn'>
         <button  className='search__btn search__btn_go' id='go'>GO</button>
         <button  className='search__btn search__btn_location' id='myLocation'>My location</button>
@@ -22,5 +27,3 @@ const SearchPanel = ({ entryField, onChangeField }) => {
     </div>
   )
 };
-
-export default SearchPanel;

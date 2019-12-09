@@ -1,0 +1,2 @@
+export const ADD_LOCALITY_TO_FIELD = 'ADD_LOCALITY_TO_FIELD';
+export const CHANGE_FIELD = 'CHANGE_FIELD';

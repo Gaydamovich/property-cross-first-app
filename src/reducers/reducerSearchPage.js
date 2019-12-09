@@ -1,7 +1,9 @@
+import { ADD_LOCALITY_TO_FIELD, CHANGE_FIELD } from "../actions/actionsTypes/actionsTypes";
+
 const initialState = {
-  searchStatus: false,
+  searchStatus: true,
   entryField: '',
-  localStorageSave: [
+  recentSearches: [
     {
       id: 1,
       city: 'London',
@@ -21,25 +23,23 @@ const initialState = {
   
 };
 
-const reducer = (state = initialState, action) => {
+const reducerSearchPage = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_LOCALITY_TO_FIELD':
+    case ADD_LOCALITY_TO_FIELD:
       return {
         ...state,
         entryField: `${action.city}, ${action.street}`
       };
-    case 'CHANGE_FIELD':
+    case CHANGE_FIELD:
       return {
         ...state,
         entryField: action.payload
       };
-    case 'GET_LOCAL_STORAGE':
-      return state;
     default:
       return state;
   }
 };
 
 export {
-  reducer
+  reducerSearchPage
 }

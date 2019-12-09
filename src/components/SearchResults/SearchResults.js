@@ -2,26 +2,25 @@ import React from 'react';
 import './SearchResults.scss';
 
 
-const SearchResults = ({ localStorageSave , searchStatus, onClickItem}) => {
-  let title, listId;
+export const SearchResults = props => {
+  const { recentSearches , searchStatus, onClickItem} = props;
   
-  const history = localStorageSave.map( item => {
+  const history = recentSearches.map( item => {
+    const clickItem = () => onClickItem(item.city, item.street);
+    
     return <li className='search-results__items_item'
                key={item.id}
-               onClick={ () => onClickItem(item.city, item.street) }>{item.city}, {item.street}</li>
+               onClick={ clickItem }>{item.city}, {item.street}</li>
   });
-  
-  searchStatus ? title = 'Available locations' : title = 'Recent searches';
-  searchStatus ? listId = 'locations' : listId = 'recentSearches';
   
   return (
     <div className='search-results'>
-      <h2  className='search-results__title'>{ title }</h2>
-      <ul  className='search-results__items' id={ listId }>
-        { localStorageSave.length ? history : <div>Not Found</div> }
+      <h2  className='search-results__title'>
+        { searchStatus ? 'Available locations' : 'Recent searches' }
+      </h2>
+      <ul  className='search-results__items' id={ searchStatus ? 'locations' : 'recentSearches' }>
+        { recentSearches.length ? history : <div>Not Found</div> }
       </ul>
     </div>
   )
 };
-
-export default SearchResults;
