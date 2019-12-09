@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
-import SearchPage from "../SearchPage/SearchPage";
-import ListingPage from "../PropertyListingPage/ListingPage";
-import DetailsPage from "../PropertyDetailsPage/DetailsPage";
-import FavouritesPage from "../FavouritesPage/FavouritesPage";
+import { ListingPage } from "../PropertyListingPage/ListingPage";
+import { DetailsPage } from "../PropertyDetailsPage/DetailsPage";
+import { FavouritesPage } from "../FavouritesPage/FavouritesPage";
+import { Header } from "../Header/Header";
 import './App.css';
-import {Header} from "../Header/Header";
+import SearchPageContainer from "../../containers/SearchPageContainer";
 
-const App = () => {
-    return (
-      <div className='wrapper-app'>
-        <Header/>
-        <Switch>
-          <Route path='/' exact component={SearchPage}/>
-          <Route path='/listing' exact component={ListingPage}/>
-          <Route path='/details' exact component={DetailsPage}/>
-          <Route path='/favourites' exact component={FavouritesPage}/>
-        </Switch>
-      </div>
-    )
+
+export const App = () => {
+  
+  return (
+    <div className='wrapper-app'>
+      <Header/>
+      <Switch>
+        <Route path='/' exact>
+          <SearchPageContainer />
+        </Route>
+        <Route path='/listing' exact component={ListingPage}/>
+        <Route path='/details' exact component={DetailsPage}/>
+        <Route path='/favourites' exact component={FavouritesPage}/>
+      </Switch>
+    </div>
+  )
 };
 
-export default App

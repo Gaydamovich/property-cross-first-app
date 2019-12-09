@@ -1,0 +1,9 @@
+.search-results {
+  padding: 40px;
+  text-align: center;
+  &__items {
+    width: 40%;
+    margin: 0 auto;
+    padding-left: 0;
+  }
+}
