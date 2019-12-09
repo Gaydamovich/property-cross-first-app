@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addLocalityToField, changeField } from "../actions/searchPageActions";
-import { SearchPage } from "../components/SearchPage/SearchPage";
+import { addLocalityToField, changeField } from "../../actions/searchPageActions";
+import { SearchPage } from "../../components/Search/SearchPage/SearchPage";
 
 const SearchPageContainer = props => {
   const { searchPage, addLocalityToField, changeField } = props;
