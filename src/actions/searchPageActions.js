@@ -5,7 +5,7 @@ import {
 
 
 
-export const actionAddLocalityToField = (city, street) => {
+export const addLocalityToField = (city, street) => {
   return {
     type: ADD_LOCALITY_TO_FIELD,
     city,
@@ -13,7 +13,7 @@ export const actionAddLocalityToField = (city, street) => {
   }
 };
 
-export const actionChangeField = (value) => {
+export const changeField = (value) => {
   return {
     type: CHANGE_FIELD,
     payload: value

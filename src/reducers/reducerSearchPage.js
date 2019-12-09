@@ -23,7 +23,7 @@ const initialState = {
   
 };
 
-const reducerSearchPage = (state = initialState, action) => {
+const searchPage = (state = initialState, action) => {
   switch (action.type) {
     case ADD_LOCALITY_TO_FIELD:
       return {
@@ -41,5 +41,5 @@ const reducerSearchPage = (state = initialState, action) => {
 };
 
 export {
-  reducerSearchPage
+  searchPage
 }

@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware } from "redux";
-import { reducerSearchPage } from "../reducers/reducerSearchPage";
+import combineReducers from "../reducers";
 import thunk from "redux-thunk";
 
-const store = createStore(reducerSearchPage, applyMiddleware(thunk));
+const store = createStore(combineReducers, applyMiddleware(thunk));
 
 
 export {
