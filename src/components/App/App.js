@@ -5,7 +5,7 @@ import { DetailsPage } from "../PropertyDetailsPage/DetailsPage";
 import { FavouritesPage } from "../FavouritesPage/FavouritesPage";
 import { Header } from "../Header/Header";
 import './App.css';
-import SearchPageContainer from "../../containers/SearchPageContainer";
+import SearchPageContainer from "../../containers/Search/SearchPageContainer";
 
 
 export const App = () => {
