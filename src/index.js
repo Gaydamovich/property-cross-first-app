@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { App } from './components/App/App';
-import { store } from "./store";
+import App from './components/App/App';
+import store from './store';
 import 'normalize.css';
-
 
 ReactDOM.render(
   <Provider store={store}>
@@ -13,6 +12,5 @@ ReactDOM.render(
       <App />
     </Router>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
-
