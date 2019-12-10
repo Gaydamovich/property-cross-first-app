@@ -22,7 +22,7 @@ const SearchPage = (props) => {
 
 SearchPage.propTypes = {
   entryField: PropTypes.string.isRequired,
-  searchStatus: PropTypes.bool,
+  searchStatus: PropTypes.bool.isRequired,
   onClickItem: PropTypes.func.isRequired,
   recentSearches: PropTypes.array.isRequired,
   onChangeField: PropTypes.func.isRequired,

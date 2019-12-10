@@ -23,7 +23,7 @@ const SearchResults = (props) => {
 
 SearchResults.propTypes = {
   recentSearches: PropTypes.array.isRequired,
-  searchStatus: PropTypes.bool,
+  searchStatus: PropTypes.bool.isRequired,
   onClickItem: PropTypes.func.isRequired,
 };
 

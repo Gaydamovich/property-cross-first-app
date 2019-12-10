@@ -7,7 +7,7 @@ const SearchResultsItem = (props) => {
   const { item, onClickItem } = props;
   const clickItem = () => onClickItem(item.city, item.street);
   return (
-    <li className="search-results__items_item" onClick={clickItem}>
+    <li className="search-results__items_item" onClick={clickItem} aria-hidden>
       {item.city}
       ,
       {item.street}

@@ -5,13 +5,13 @@ import { addLocalityToField, changeField } from '../../actions/searchPageActions
 import SearchPage from '../../components/Search/SearchPage/SearchPage';
 
 const SearchPageContainer = (props) => {
-  const { searchPage, addLocalityToField, changeField } = props;
-  const onClickItem = (city, street) => addLocalityToField(city, street);
-  const onChangeField = (value) => changeField(value);
+  const { searchPage } = props;
+  const onClickItem = (city, street) => props.addLocalityToField(city, street);
+  const onChangeField = (value) => props.changeField(value);
   return (
     <SearchPage
       recentSearches={searchPage.recentSearches}
-      searchStatu={searchPage.searchStatus}
+      searchStatus={searchPage.searchStatus}
       entryField={searchPage.entryField}
       onClickItem={onClickItem}
       onChangeField={onChangeField}
