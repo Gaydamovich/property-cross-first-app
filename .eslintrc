@@ -4,7 +4,10 @@
     "airbnb",
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["react", "jsx-a11y"],
+  "plugins": [
+    "react",
+    "jsx-a11y"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -12,6 +15,6 @@
   "ecmaVersion": 6
   },
   "rules": {
-    "jsx-a11y/rule-name": 2
+    "react/forbid-prop-types": [<enabled>, { "forbid": [<string>], "checkContextTypes": <boolean>, "checkChildContextTypes": <boolean> }]
   }
 }

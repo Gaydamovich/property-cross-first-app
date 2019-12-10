@@ -12,7 +12,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
@@ -44,12 +44,16 @@ module.exports = {
       }
     ]
   },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
   devServer: {
     historyApiFallback: true,
   },
   
   plugins: [
     new HtmlWebpackPlugin({
+      filename: "index.html",
       template: "./src/index.html",
     }),
     new MiniCssExtractPlugin({
