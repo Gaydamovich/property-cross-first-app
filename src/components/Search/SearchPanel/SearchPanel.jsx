@@ -2,10 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './SearchPanel.scss';
 
-const SearchPanel = ({ entryField, onChangeField }) => {
-  const changeField = (event) => {
-    onChangeField(event.target.value);
-  };
+const SearchPanel = ({ entryField, onChangeField, getLocation }) => {
+  const changeField = (event) => onChangeField(event.target.value);
+  const clickToGetLocation = () => getLocation(entryField);
   return (
     <div className="search">
       <h1 className="search__title">Search</h1>
@@ -22,7 +21,14 @@ const SearchPanel = ({ entryField, onChangeField }) => {
         value={entryField}
       />
       <div className="wrapper-btn">
-        <button type="submit" className="search__btn search__btn_go" id="go">GO</button>
+        <button
+          type="submit"
+          className="search__btn search__btn_go"
+          id="go"
+          onClick={clickToGetLocation}
+        >
+          GO
+        </button>
         <button type="submit" className="search__btn search__btn_location" id="myLocation">My location</button>
       </div>
     </div>
@@ -32,6 +38,7 @@ const SearchPanel = ({ entryField, onChangeField }) => {
 SearchPanel.propTypes = {
   entryField: PropTypes.string.isRequired,
   onChangeField: PropTypes.func.isRequired,
+  getLocation: PropTypes.func.isRequired,
 };
 
 export default SearchPanel;

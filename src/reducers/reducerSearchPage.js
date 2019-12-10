@@ -1,25 +1,13 @@
-import { ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, CHANGE_FIELD_SEARCH_PAGE } from '../actions/actionsTypes/actionsTypes';
+import {
+  ADD_LOCALITY_TO_FIELD_SEARCH_PAGE,
+  CHANGE_FIELD_SEARCH_PAGE,
+  GET_ALL_LOCATIONS,
+} from '../actions/actionsTypes/actionsTypes';
 
 const initialState = {
   searchStatus: true,
   entryField: '',
-  recentSearches: [
-    {
-      id: 1,
-      city: 'London',
-      street: 'Piccadilly',
-    },
-    {
-      id: 2,
-      city: 'London',
-      street: 'Oxford Street',
-    },
-    {
-      id: 3,
-      city: 'London',
-      street: 'Baker Street',
-    },
-  ],
+  recentSearches: [],
 };
 
 const searchPage = (state = initialState, action) => {
@@ -33,6 +21,18 @@ const searchPage = (state = initialState, action) => {
       return {
         ...state,
         entryField: action.payload,
+      };
+    case GET_ALL_LOCATIONS:
+      return {
+        ...state,
+        recentSearches: [
+          ...state.recentSearches,
+          {
+            id: Date.now(),
+            city: action.title,
+            street: action.placeName,
+          },
+        ],
       };
     default:
       return state;

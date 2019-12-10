@@ -6,11 +6,15 @@ import SearchResults from '../SearchResults/SearchResults';
 const SearchPage = (props) => {
   const {
     entryField, onChangeField, recentSearches,
-    searchStatus, onClickItem,
+    searchStatus, onClickItem, getLocation,
   } = props;
   return (
     <div className="wrapper-search">
-      <SearchPanel entryField={entryField} onChangeField={onChangeField} />
+      <SearchPanel
+        entryField={entryField}
+        onChangeField={onChangeField}
+        getLocation={getLocation}
+      />
       <SearchResults
         recentSearches={recentSearches}
         searchStatus={searchStatus}
@@ -26,6 +30,7 @@ SearchPage.propTypes = {
   onClickItem: PropTypes.func.isRequired,
   recentSearches: PropTypes.array.isRequired,
   onChangeField: PropTypes.func.isRequired,
+  getLocation: PropTypes.func.isRequired,
 };
 
 export default SearchPage;
