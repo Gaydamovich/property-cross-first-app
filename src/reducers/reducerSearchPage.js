@@ -1,7 +1,6 @@
 import {
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE,
   CHANGE_FIELD_SEARCH_PAGE,
-  GET_ALL_LOCATIONS,
 } from '../actions/actionsTypes/actionsTypes';
 
 const initialState = {
@@ -9,6 +8,7 @@ const initialState = {
   entryField: '',
   recentSearches: [],
   requestStatus: false,
+  data: null,
 };
 
 const searchPage = (state = initialState, action) => {
@@ -23,22 +23,30 @@ const searchPage = (state = initialState, action) => {
         ...state,
         entryField: action.payload,
       };
-    case GET_ALL_LOCATIONS:
-      return {
-        ...state,
-        recentSearches: [
-          ...state.recentSearches,
-          {
-            id: Date.now(),
-            city: action.title,
-            street: action.placeName,
-          },
-        ],
-      };
+    // case GET_ALL_LOCATIONS:
+    //   return {
+    //     ...state,
+    //     recentSearches: [
+    //       ...state.recentSearches,
+    //       {
+    //         id: Date.now(),
+    //         city: action.title,
+    //         street: action.placeName,
+    //       },
+    //     ],
+    //   };
     case 'CHANGE_STATUS_REQUEST':
       return {
         ...state,
         requestStatus: !state.requestStatus,
+      };
+    case 'REQUEST_SUCCESS':
+      return {
+        ...state,
+        recentSearches: [
+          ...state.recentSearches,
+          ...action.payload,
+        ],
       };
     default:
       return state;

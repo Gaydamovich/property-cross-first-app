@@ -1,7 +1,7 @@
 import '@babel/polyfill';
 import {
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE,
-  CHANGE_FIELD_SEARCH_PAGE, GET_ALL_LOCATIONS,
+  CHANGE_FIELD_SEARCH_PAGE,
 } from './actionsTypes/actionsTypes';
 
 export const addLocalityToField = (city, street) => ({
@@ -15,20 +15,32 @@ export const changeField = (value) => ({
   payload: value,
 });
 
-export const getAllLocations = (data) => ({
-  type: GET_ALL_LOCATIONS,
-  title: data.title,
-  placeName: data.placeName,
-});
-
-export const asyncGetLocations = (value) => async (dispatch) => {
-  dispatch({ type: 'CHANGE_STATUS_REQUEST' });
-  try {
-    const response = await fetch(`http://localhost:3000/locations/searchByName?placeName=${value}`);
-    const data = await response.json();
-    data.map((el) => dispatch(getAllLocations(el)));
-    dispatch({ type: 'CHANGE_STATUS_REQUEST' });
-  } catch (error) {
-    dispatch({ type: 'CHANGE_STATUS_ERROR', payload: error.message });
+export const fetchApiMiddleware = () => (dispatch) => async (action) => {
+  if (action.request) {
+    dispatch({ type: 'REQUEST_STARTED' });
+    let newAction;
+    try {
+      const response = await action.payload;
+      const data = await response.json();
+      newAction = {
+        ...action,
+        type: 'REQUEST_SUCCESS',
+        payload: data,
+      };
+    } catch (error) {
+      newAction = {
+        ...action,
+        type: 'REQUEST_FAILED',
+        payload: error.message,
+      };
+    }
+    return dispatch(newAction);
   }
+  return dispatch(action);
 };
+
+export const asyncGetLocations = (value) => ({
+  request: true,
+  type: 'ASYNC_GET_LOCATIONS',
+  payload: fetch(`http://localhost:3000/locations/searchByName?placeName=${value}`),
+});

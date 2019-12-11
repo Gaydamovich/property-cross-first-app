@@ -5,12 +5,12 @@ import './SearchResultsItem.scss';
 
 const SearchResultsItem = (props) => {
   const { item, onClickItem } = props;
-  const clickItem = () => onClickItem(item.city, item.street);
+  const clickItem = () => onClickItem(item.title, item.placeName);
   return (
     <li className="search-results__items_item" onClick={clickItem} aria-hidden>
-      {item.city}
+      {item.title}
       ,
-      {item.street}
+      {item.placeName}
     </li>
   );
 };
