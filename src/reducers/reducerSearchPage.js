@@ -8,6 +8,7 @@ const initialState = {
   searchStatus: true,
   entryField: '',
   recentSearches: [],
+  requestStatus: false,
 };
 
 const searchPage = (state = initialState, action) => {
@@ -33,6 +34,11 @@ const searchPage = (state = initialState, action) => {
             street: action.placeName,
           },
         ],
+      };
+    case 'CHANGE_STATUS_REQUEST':
+      return {
+        ...state,
+        requestStatus: !state.requestStatus,
       };
     default:
       return state;

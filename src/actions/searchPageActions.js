@@ -1,3 +1,4 @@
+import '@babel/polyfill';
 import {
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE,
   CHANGE_FIELD_SEARCH_PAGE, GET_ALL_LOCATIONS,
@@ -20,8 +21,14 @@ export const getAllLocations = (data) => ({
   placeName: data.placeName,
 });
 
-export const asyncGetLocations = (placeName) => (dispatch) => {
-  fetch(`http://localhost:3000/locations/searchByName?placeName=${placeName}`)
-    .then((response) => response.json())
-    .then((data) => data.map((el) => dispatch(getAllLocations(el))));
+export const asyncGetLocations = (value) => async (dispatch) => {
+  dispatch({ type: 'CHANGE_STATUS_REQUEST' });
+  try {
+    const response = await fetch(`http://localhost:3000/locations/searchByName?placeName=${value}`);
+    const data = await response.json();
+    data.map((el) => dispatch(getAllLocations(el)));
+    dispatch({ type: 'CHANGE_STATUS_REQUEST' });
+  } catch (error) {
+    dispatch({ type: 'CHANGE_STATUS_ERROR', payload: error.message });
+  }
 };
