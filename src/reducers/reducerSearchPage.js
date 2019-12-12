@@ -4,11 +4,11 @@ import {
 } from '../actions/actionsTypes/actionsTypes';
 
 const initialState = {
-  searchStatus: true,
+  searchStatus: false,
   entryField: '',
   recentSearches: [],
-  requestStatus: false,
-  data: null,
+  currentSearch: [],
+  loading: false,
 };
 
 const searchPage = (state = initialState, action) => {
@@ -17,23 +17,25 @@ const searchPage = (state = initialState, action) => {
       return {
         ...state,
         entryField: `${action.city}, ${action.street}`,
+        searchStatus: true,
       };
     case CHANGE_FIELD_SEARCH_PAGE:
       return {
         ...state,
         entryField: action.payload,
       };
-    case `${ASYNC_GET_LOCATIONS}_REQUEST`:
+    case `${ASYNC_GET_LOCATIONS}_REQUEST_STARTED`:
       return {
         ...state,
-        requestStatus: !state.requestStatus,
+        loading: !state.loading,
+        searchStatus: true,
       };
     case `${ASYNC_GET_LOCATIONS}_REQUEST_SUCCESS`:
       return {
         ...state,
-        requestStatus: !state.requestStatus,
-        recentSearches: [
-          ...state.recentSearches,
+        loading: !state.loading,
+        currentSearch: [
+          ...state.currentSearch,
           ...action.payload,
         ],
       };

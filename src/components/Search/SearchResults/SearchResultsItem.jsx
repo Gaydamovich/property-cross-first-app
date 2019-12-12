@@ -5,12 +5,15 @@ import './SearchResultsItem.scss';
 
 const SearchResultsItem = (props) => {
   const { item, onClickItem } = props;
-  const clickItem = () => onClickItem(item.title, item.placeName);
+  let placeName;
+  const clickItem = () => onClickItem(item.title, placeName);
+  placeName = item.placeName.split('_').pop();
+  placeName = placeName[0].toUpperCase() + placeName.slice(1);
   return (
     <li className="search-results__items_item" onClick={clickItem} aria-hidden>
       {item.title}
       ,
-      {item.placeName}
+      {placeName}
     </li>
   );
 };

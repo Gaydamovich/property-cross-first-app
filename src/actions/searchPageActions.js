@@ -15,8 +15,7 @@ export const changeField = (value) => ({
   payload: value,
 });
 
-export const asyncGetLocations = (value) => ({
-  request: true,
+export const getLocations = (value) => ({
   type: ASYNC_GET_LOCATIONS,
-  payload: fetch(`http://localhost:3000/locations/searchByName?placeName=${value}`),
+  request: () => fetch(`http://localhost:3000/locations/searchByName?placeName=${value}`),
 });

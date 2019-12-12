@@ -1,9 +1,9 @@
 const fetchApiMiddleware = () => (dispatch) => async (action) => {
-  if (action.request) {
+  if (typeof action.request === 'function') {
     dispatch({ type: `${action.type}_REQUEST_STARTED` });
     let newAction;
     try {
-      const response = await action.payload;
+      const response = await action.request();
       const data = await response.json();
       newAction = {
         ...action,
