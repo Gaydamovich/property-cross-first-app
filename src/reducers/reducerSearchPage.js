@@ -1,4 +1,5 @@
 import {
+  ADD_DATA_FROM_LOCAL_STORAGE,
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
   CHANGE_FIELD_SEARCH_PAGE,
 } from '../actions/actionsTypes/actionsTypes';
@@ -6,13 +7,10 @@ import {
 const initialState = {
   searchStatus: false,
   entryField: '',
-  recentSearches: [{
-    id: 1,
-    title: 'Albury',
-    placeName: 'albury_ware',
-  }],
+  recentSearches: [],
   currentSearch: [],
   loading: false,
+  error: null,
 };
 
 const searchPage = (state = initialState, action) => {
@@ -43,7 +41,12 @@ const searchPage = (state = initialState, action) => {
           ...action.payload,
         ],
       };
-    case 'ADD_DATA_FROM_LOCAL_STORAGE':
+    case `${ASYNC_GET_LOCATIONS}_REQUEST_FAILED`:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case ADD_DATA_FROM_LOCAL_STORAGE:
       return {
         ...state,
         recentSearches: [

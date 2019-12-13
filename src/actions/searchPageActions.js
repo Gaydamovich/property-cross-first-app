@@ -1,6 +1,7 @@
 import '@babel/polyfill';
 import { v4 } from 'uuid';
 import {
+  ADD_DATA_FROM_LOCAL_STORAGE,
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
   CHANGE_FIELD_SEARCH_PAGE,
 } from './actionsTypes/actionsTypes';
@@ -27,6 +28,6 @@ export const getLocations = (value) => ({
 });
 
 export const checkLocalStorage = (data) => ({
-  type: 'ADD_DATA_FROM_LOCAL_STORAGE',
+  type: ADD_DATA_FROM_LOCAL_STORAGE,
   payload: data,
 });
