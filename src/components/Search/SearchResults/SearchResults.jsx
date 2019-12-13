@@ -11,9 +11,13 @@ const SearchResults = (props) => {
     onClickItem, currentSearch, getSearchResults,
   } = props;
   useEffect(() => {
-    const data = localStorage.getItem('search');
-    if (data) getSearchResults(JSON.parse(data));
+    const data = localStorage.getItem('search') || [];
+    if (data.length) getSearchResults(JSON.parse(data));
   }, []);
+
+  useEffect(() => {
+    if (currentSearch.length) localStorage.setItem('search', JSON.stringify(currentSearch));
+  }, [currentSearch]);
   const history = recentSearches
     .map((item) => <RecentResultsSearch key={item.id} onClickItem={onClickItem} item={item} />);
   const currentLocations = currentSearch

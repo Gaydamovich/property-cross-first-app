@@ -15,14 +15,9 @@ export const changeField = (value) => ({
   payload: value,
 });
 
-export const addResultsSearchToLocalStorage = (data) => {
-  localStorage.setItem('search', JSON.stringify(data));
-};
-
 export const getLocations = (value) => ({
   type: ASYNC_GET_LOCATIONS,
   request: () => fetch(`http://localhost:3000/locations/searchByName?placeName=${value}`),
-  answer: (data) => addResultsSearchToLocalStorage(data),
 });
 
 export const getDataFromLocalStorage = (data) => ({
