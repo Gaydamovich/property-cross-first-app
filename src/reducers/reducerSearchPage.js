@@ -6,7 +6,11 @@ import {
 const initialState = {
   searchStatus: false,
   entryField: '',
-  recentSearches: [],
+  recentSearches: [{
+    id: 1,
+    title: 'Albury',
+    placeName: 'albury_ware',
+  }],
   currentSearch: [],
   loading: false,
 };
@@ -33,10 +37,17 @@ const searchPage = (state = initialState, action) => {
     case `${ASYNC_GET_LOCATIONS}_REQUEST_SUCCESS`:
       return {
         ...state,
+        entryField: '',
         loading: !state.loading,
         currentSearch: [
-          ...state.currentSearch,
           ...action.payload,
+        ],
+      };
+    case 'ADD_DATA_FROM_LOCAL_STORAGE':
+      return {
+        ...state,
+        recentSearches: [
+          ...action.payload.slice(-3),
         ],
       };
     default:

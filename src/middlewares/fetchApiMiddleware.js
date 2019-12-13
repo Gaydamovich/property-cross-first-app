@@ -5,6 +5,7 @@ const fetchApiMiddleware = () => (dispatch) => async (action) => {
     try {
       const response = await action.request();
       const data = await response.json();
+      action.answer(data);
       newAction = {
         ...action,
         type: `${action.type}_REQUEST_SUCCESS`,
