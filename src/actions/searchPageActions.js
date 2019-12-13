@@ -1,5 +1,4 @@
 import '@babel/polyfill';
-import { v4 } from 'uuid';
 import {
   ADD_DATA_FROM_LOCAL_STORAGE,
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
@@ -18,7 +17,7 @@ export const changeField = (value) => ({
 });
 
 export const addResultsSearchToLocalStorage = (data) => {
-  data.map((item) => localStorage.setItem(v4(), JSON.stringify(item)));
+  localStorage.setItem('search', JSON.stringify(data));
 };
 
 export const getLocations = (value) => ({

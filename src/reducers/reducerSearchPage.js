@@ -50,7 +50,7 @@ const searchPage = (state = initialState, action) => {
       return {
         ...state,
         recentSearches: [
-          ...action.payload.slice(-3),
+          ...action.payload,
         ],
       };
     default:

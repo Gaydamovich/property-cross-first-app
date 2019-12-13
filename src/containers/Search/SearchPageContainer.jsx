@@ -13,16 +13,9 @@ const SearchPageContainer = (props) => {
   const onChangeField = (value) => props.changeField(value);
   const getLocation = (name) => props.getLocations(name);
   const check = () => {
-    const data = [];
-    if (localStorage.length) {
-      const keys = Object.keys(localStorage);
-      keys.forEach((item) => {
-        if (!item.includes('webpack')) {
-          data.push(JSON.parse(localStorage.getItem(item)));
-        }
-      });
+    if (localStorage.length > 1) {
+      props.checkLocalStorage(JSON.parse(localStorage.getItem('search')));
     }
-    props.checkLocalStorage(data);
   };
   return (
     <SearchPage
