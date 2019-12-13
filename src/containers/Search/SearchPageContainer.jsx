@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   addLocalityToField, changeField,
-  getLocations, checkLocalStorage,
+  getLocations, getDataFromLocalStorage,
 } from '../../actions/searchPageActions';
 import SearchPage from '../../components/Search/SearchPage/SearchPage';
 
@@ -12,11 +12,7 @@ const SearchPageContainer = (props) => {
   const onClickItem = (city, street) => props.addLocalityToField(city, street);
   const onChangeField = (value) => props.changeField(value);
   const getLocation = (name) => props.getLocations(name);
-  const check = () => {
-    if (localStorage.length > 1) {
-      props.checkLocalStorage(JSON.parse(localStorage.getItem('search')));
-    }
-  };
+  const getSearchResults = (data) => props.getDataFromLocalStorage(data);
   return (
     <SearchPage
       recentSearches={searchPage.recentSearches}
@@ -26,7 +22,7 @@ const SearchPageContainer = (props) => {
       onClickItem={onClickItem}
       onChangeField={onChangeField}
       getLocation={getLocation}
-      check={check}
+      getSearchResults={getSearchResults}
     />
   );
 };
@@ -36,7 +32,7 @@ SearchPageContainer.propTypes = {
   addLocalityToField: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
   getLocations: PropTypes.func.isRequired,
-  checkLocalStorage: PropTypes.func.isRequired,
+  getDataFromLocalStorage: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -47,7 +43,7 @@ const mapDispatchToProps = {
   addLocalityToField,
   changeField,
   getLocations,
-  checkLocalStorage,
+  getDataFromLocalStorage,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPageContainer);

@@ -1,7 +1,6 @@
 import {
-  ADD_DATA_FROM_LOCAL_STORAGE,
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
-  CHANGE_FIELD_SEARCH_PAGE,
+  CHANGE_FIELD_SEARCH_PAGE, GET_DATA_FROM_LOCAL_STORAGE,
 } from '../actions/actionsTypes/actionsTypes';
 
 const initialState = {
@@ -46,7 +45,7 @@ const searchPage = (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
-    case ADD_DATA_FROM_LOCAL_STORAGE:
+    case GET_DATA_FROM_LOCAL_STORAGE:
       return {
         ...state,
         recentSearches: [
