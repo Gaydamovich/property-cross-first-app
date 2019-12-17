@@ -2,7 +2,7 @@ import {
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
   CHANGE_FIELD_SEARCH_PAGE,
 } from '../actions/actionsTypes/actionsTypes';
-import SEARCH from '../constants/constants';
+import { SEARCH } from '../constants/constants';
 
 const initialState = {
   searchStatus: false,

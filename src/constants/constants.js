@@ -1,3 +1,2 @@
-const SEARCH = 'SEARCH';
-
-export default SEARCH;
+/* eslint-disable import/prefer-default-export */
+export const SEARCH = 'SEARCH';

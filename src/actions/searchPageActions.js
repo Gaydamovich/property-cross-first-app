@@ -3,7 +3,7 @@ import {
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
   CHANGE_FIELD_SEARCH_PAGE,
 } from './actionsTypes/actionsTypes';
-import SEARCH from '../constants/constants';
+import { SEARCH } from '../constants/constants';
 
 export const addLocalityToField = (city, street) => ({
   type: ADD_LOCALITY_TO_FIELD_SEARCH_PAGE,
