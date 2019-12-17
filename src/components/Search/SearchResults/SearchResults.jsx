@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './SearchResults.scss';
-import CurrentResultsSearch from './currentResultsSearch/currentResultsSearch';
-import RecentResultsSearch from './recentResultsSearch/recentResultsSearch';
+import CurrentResultsSearch from './currentResultsSearch/CurrentResultsSearch';
+import RecentResultsSearch from './recentResultsSearch/RecentResultsSearch';
+import SEARCH from '../../../constants/constants';
 
 
 const SearchResults = (props) => {
@@ -11,26 +12,20 @@ const SearchResults = (props) => {
     onClickItem, currentSearch, getSearchResults,
   } = props;
   useEffect(() => {
-    const data = localStorage.getItem('search') || [];
-    if (data.length) getSearchResults(JSON.parse(data));
+    getSearchResults(JSON.parse(localStorage.getItem(SEARCH)));
   }, []);
-
-  useEffect(() => {
-    if (currentSearch.length) localStorage.setItem('search', JSON.stringify(currentSearch));
-  }, [currentSearch]);
   const history = recentSearches
     .map((item) => <RecentResultsSearch key={item.id} onClickItem={onClickItem} item={item} />);
   const currentLocations = currentSearch
     .map((item) => <CurrentResultsSearch key={item.id} onClickItem={onClickItem} item={item} />);
+  const results = history || <div>Not Found</div>;
   return (
     <div className="search-results">
       <h2 className="search-results__title">
         {searchStatus ? 'Available locations' : 'Recent searches'}
       </h2>
       <ul className="search-results__items" id={searchStatus ? 'locations' : 'recentSearches'}>
-        {/* eslint-disable no-nested-ternary */}
-        {currentSearch.length ? currentLocations
-          : (recentSearches.length ? history : <div>Not Found</div>)}
+        {currentSearch.length ? currentLocations : results}
       </ul>
     </div>
   );

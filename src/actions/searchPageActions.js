@@ -3,6 +3,7 @@ import {
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
   CHANGE_FIELD_SEARCH_PAGE, GET_DATA_FROM_LOCAL_STORAGE,
 } from './actionsTypes/actionsTypes';
+import SEARCH from '../constants/constants';
 
 export const addLocalityToField = (city, street) => ({
   type: ADD_LOCALITY_TO_FIELD_SEARCH_PAGE,
@@ -18,6 +19,7 @@ export const changeField = (value) => ({
 export const getLocations = (value) => ({
   type: ASYNC_GET_LOCATIONS,
   request: () => fetch(`http://localhost:3000/locations/searchByName?placeName=${value}`),
+  onSuccess: (data) => localStorage.setItem(SEARCH, JSON.stringify(data)),
 });
 
 export const getDataFromLocalStorage = (data) => ({
