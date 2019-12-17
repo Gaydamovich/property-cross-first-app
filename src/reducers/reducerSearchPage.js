@@ -18,7 +18,7 @@ const searchPage = (state = initialState, action) => {
     case ADD_LOCALITY_TO_FIELD_SEARCH_PAGE:
       return {
         ...state,
-        entryField: `${action.city}, ${action.street}`,
+        entryField: `${action.longTitle}`,
         searchStatus: true,
       };
     case CHANGE_FIELD_SEARCH_PAGE:

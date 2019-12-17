@@ -1,26 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ResultsItem.scss';
+import { Link } from 'react-router-dom';
 
 
 const ResultsItem = (props) => {
-  const { item, onClickItem } = props;
-  let placeName;
-  const clickItem = () => onClickItem(item.title, placeName);
-  placeName = item.placeName.split('_').pop();
-  placeName = placeName[0].toUpperCase() + placeName.slice(1);
+  const {
+    item, getProperty,
+    onClickItem, to,
+  } = props;
+  const clickItem = () => onClickItem(item.longTitle);
   return (
-    <li className="search-results__items_item" onClick={clickItem} aria-hidden>
-      {item.title}
-      ,
-      {placeName}
-    </li>
+    <>
+      {to
+        ? (
+          <li className="search-results__items_item" aria-hidden>
+            <Link to="/listing" onClick={() => getProperty(item.placeName)}>
+              {item.longTitle}
+            </Link>
+          </li>
+        ) : (
+          <li className="search-results__items_item" onClick={clickItem} aria-hidden>
+            {item.longTitle}
+          </li>
+        )}
+    </>
   );
 };
 
+/* eslint-disable react/require-default-props */
 ResultsItem.propTypes = {
   item: PropTypes.object.isRequired,
-  onClickItem: PropTypes.func.isRequired,
+  onClickItem: PropTypes.func,
+  getProperty: PropTypes.func,
+  to: PropTypes.string,
 };
 
 export default ResultsItem;
