@@ -1,25 +1,16 @@
-import { ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, CHANGE_FIELD_SEARCH_PAGE } from '../actions/actionsTypes/actionsTypes';
+import {
+  ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
+  CHANGE_FIELD_SEARCH_PAGE,
+} from '../actions/actionsTypes/actionsTypes';
+import { SEARCH } from '../constants/constants';
 
 const initialState = {
-  searchStatus: true,
+  searchStatus: false,
   entryField: '',
-  recentSearches: [
-    {
-      id: 1,
-      city: 'London',
-      street: 'Piccadilly',
-    },
-    {
-      id: 2,
-      city: 'London',
-      street: 'Oxford Street',
-    },
-    {
-      id: 3,
-      city: 'London',
-      street: 'Baker Street',
-    },
-  ],
+  recentSearches: JSON.parse(localStorage.getItem(SEARCH)) || [],
+  currentSearch: [],
+  loading: false,
+  error: null,
 };
 
 const searchPage = (state = initialState, action) => {
@@ -28,11 +19,32 @@ const searchPage = (state = initialState, action) => {
       return {
         ...state,
         entryField: `${action.city}, ${action.street}`,
+        searchStatus: true,
       };
     case CHANGE_FIELD_SEARCH_PAGE:
       return {
         ...state,
         entryField: action.payload,
+      };
+    case `${ASYNC_GET_LOCATIONS}_REQUEST_STARTED`:
+      return {
+        ...state,
+        loading: !state.loading,
+        searchStatus: true,
+      };
+    case `${ASYNC_GET_LOCATIONS}_REQUEST_SUCCESS`:
+      return {
+        ...state,
+        entryField: '',
+        loading: !state.loading,
+        currentSearch: [
+          ...action.payload,
+        ],
+      };
+    case `${ASYNC_GET_LOCATIONS}_REQUEST_FAILED`:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

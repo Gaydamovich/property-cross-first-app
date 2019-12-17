@@ -23,5 +23,12 @@
     "react/forbid-prop-types": [0, { "forbid": ['any', 'array', 'object'], "checkContextTypes": true, "checkChildContextTypes": true }],
     "jsx-a11y/no-noninteractive-element-interactions": [0, { "handlers": []}],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "camelcase": [0, {
+      "exceptions": [
+        "UNSAFE_componentDidMount",
+        "UNSAFE_componentWillReceiveProps",
+        "UNSAFE_componentWillUpdate"
+      ]
+    }]
   }
 }

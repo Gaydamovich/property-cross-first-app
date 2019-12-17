@@ -1,21 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './SearchResults.scss';
-import SearchResultsItem from './SearchResultsItem';
+import ResultsItem from './ResultsItem/ResultsItem';
+
 
 const SearchResults = (props) => {
   const {
-    recentSearches, searchStatus, onClickItem,
+    recentSearches, searchStatus,
+    onClickItem, currentSearch,
   } = props;
   const history = recentSearches
-    .map((item) => <SearchResultsItem key={item.id} onClickItem={onClickItem} item={item} />);
+    .map((item) => <ResultsItem key={item.id} onClickItem={onClickItem} item={item} />);
+  const currentLocations = currentSearch
+    .map((item) => <ResultsItem key={item.id} onClickItem={onClickItem} item={item} />);
+  const results = history.length ? history : <div>Not Found</div>;
   return (
     <div className="search-results">
       <h2 className="search-results__title">
         {searchStatus ? 'Available locations' : 'Recent searches'}
       </h2>
       <ul className="search-results__items" id={searchStatus ? 'locations' : 'recentSearches'}>
-        {recentSearches.length ? history : <div>Not Found</div>}
+        {currentSearch.length ? currentLocations : results}
       </ul>
     </div>
   );
@@ -23,6 +28,7 @@ const SearchResults = (props) => {
 
 SearchResults.propTypes = {
   recentSearches: PropTypes.array.isRequired,
+  currentSearch: PropTypes.array.isRequired,
   searchStatus: PropTypes.bool.isRequired,
   onClickItem: PropTypes.func.isRequired,
 };

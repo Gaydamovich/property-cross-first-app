@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
 import combineReducers from '../reducers';
+import fetchApiMiddleware from '../middlewares/fetchApiMiddleware';
 
-const store = createStore(combineReducers, applyMiddleware(thunk));
+const store = createStore(combineReducers, applyMiddleware(fetchApiMiddleware));
 
 export default store;
