@@ -1,24 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import './SearchResults.scss';
-import CurrentResultsSearch from './currentResultsSearch/CurrentResultsSearch';
-import RecentResultsSearch from './recentResultsSearch/RecentResultsSearch';
-import SEARCH from '../../../constants/constants';
+import ResultsItem from './ResultsItem/ResultsItem';
 
 
 const SearchResults = (props) => {
   const {
     recentSearches, searchStatus,
-    onClickItem, currentSearch, getSearchResults,
+    onClickItem, currentSearch,
   } = props;
-  useEffect(() => {
-    getSearchResults(JSON.parse(localStorage.getItem(SEARCH)));
-  }, []);
   const history = recentSearches
-    .map((item) => <RecentResultsSearch key={item.id} onClickItem={onClickItem} item={item} />);
+    .map((item) => <ResultsItem key={item.id} onClickItem={onClickItem} item={item} />);
   const currentLocations = currentSearch
-    .map((item) => <CurrentResultsSearch key={item.id} onClickItem={onClickItem} item={item} />);
-  const results = history || <div>Not Found</div>;
+    .map((item) => <ResultsItem key={item.id} onClickItem={onClickItem} item={item} />);
+  const results = history.length ? history : <div>Not Found</div>;
   return (
     <div className="search-results">
       <h2 className="search-results__title">
@@ -36,7 +31,6 @@ SearchResults.propTypes = {
   currentSearch: PropTypes.array.isRequired,
   searchStatus: PropTypes.bool.isRequired,
   onClickItem: PropTypes.func.isRequired,
-  getSearchResults: PropTypes.func.isRequired,
 };
 
 export default SearchResults;

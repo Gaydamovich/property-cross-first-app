@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './recentResultsSearch.scss';
+import './ResultsItem.scss';
 
 
-const RecentResultsSearch = (props) => {
+const ResultsItem = (props) => {
   const { item, onClickItem } = props;
   let placeName;
   const clickItem = () => onClickItem(item.title, placeName);
@@ -18,9 +18,9 @@ const RecentResultsSearch = (props) => {
   );
 };
 
-RecentResultsSearch.propTypes = {
+ResultsItem.propTypes = {
   item: PropTypes.object.isRequired,
   onClickItem: PropTypes.func.isRequired,
 };
 
-export default RecentResultsSearch;
+export default ResultsItem;

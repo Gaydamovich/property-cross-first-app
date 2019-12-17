@@ -1,7 +1,7 @@
 import '@babel/polyfill';
 import {
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
-  CHANGE_FIELD_SEARCH_PAGE, GET_DATA_FROM_LOCAL_STORAGE,
+  CHANGE_FIELD_SEARCH_PAGE,
 } from './actionsTypes/actionsTypes';
 import SEARCH from '../constants/constants';
 
@@ -20,9 +20,4 @@ export const getLocations = (value) => ({
   type: ASYNC_GET_LOCATIONS,
   request: () => fetch(`http://localhost:3000/locations/searchByName?placeName=${value}`),
   onSuccess: (data) => localStorage.setItem(SEARCH, JSON.stringify(data)),
-});
-
-export const getDataFromLocalStorage = (data) => ({
-  type: GET_DATA_FROM_LOCAL_STORAGE,
-  payload: data,
 });
