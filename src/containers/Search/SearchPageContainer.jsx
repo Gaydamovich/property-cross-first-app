@@ -20,6 +20,7 @@ const SearchPageContainer = (props) => {
       currentSearch={searchPage.currentSearch}
       searchStatus={searchPage.searchStatus}
       entryField={searchPage.entryField}
+      error={searchPage.error}
       onClickItem={onClickItem}
       onChangeField={onChangeField}
       getLocation={getLocation}

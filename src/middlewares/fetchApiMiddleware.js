@@ -15,7 +15,7 @@ const fetchApiMiddleware = () => (dispatch) => async (action) => {
       newAction = {
         ...action,
         type: `${action.type}_REQUEST_FAILED`,
-        payload: error,
+        payload: error.message,
       };
     }
     return dispatch(newAction);

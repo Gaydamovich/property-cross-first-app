@@ -23,6 +23,11 @@ const listingPage = (state = initialState, action) => {
           ...action.payload.properties,
         ],
       };
+    case `${GET_PROPERTIES}_REQUEST_FAILED`:
+      return {
+        ...state,
+        error: action.payload,
+      };
     default:
       return state;
   }
