@@ -18,6 +18,7 @@ const listingPage = (state = initialState, action) => {
         longTitle: action.payload.location.longTitle,
         page: action.page,
         totalResults: action.payload.totalResults,
+        error: null,
         list: [
           ...state.list,
           ...action.payload.properties,

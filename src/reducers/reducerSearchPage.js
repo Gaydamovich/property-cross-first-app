@@ -37,6 +37,7 @@ const searchPage = (state = initialState, action) => {
         ...state,
         entryField: '',
         loading: !state.loading,
+        error: null,
         currentSearch: [
           ...action.payload,
         ],
