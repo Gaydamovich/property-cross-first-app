@@ -28,7 +28,6 @@ const ResultsItem = (props) => {
   );
 };
 
-/* eslint-disable react/require-default-props */
 ResultsItem.propTypes = {
   item: PropTypes.object.isRequired,
   onClickItem: PropTypes.func,

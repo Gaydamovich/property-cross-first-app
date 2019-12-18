@@ -5,7 +5,7 @@ import FavouritesPage from '../FavouritesPage/FavouritesPage';
 import Header from '../Header/Header';
 import './App.css';
 import SearchPageContainer from '../../containers/Search/SearchPageContainer';
-import ListingPageContainer from '../../containers/Listing/ListingPageContainer';
+import { ListingPageContainer } from '../../containers/Listing/ListingPageContainer';
 
 
 const App = () => (
