@@ -2,6 +2,7 @@ import { GET_PROPERTIES } from '../actions/actionsTypes/actionsTypes';
 
 const initialState = {
   placeName: '',
+  longTitle: '',
   list: [],
   error: null,
 };
@@ -12,6 +13,7 @@ const listingPage = (state = initialState, action) => {
       return {
         ...state,
         placeName: action.placeName,
+        longTitle: action.longTitle,
         list: [
           ...action.payload.properties,
         ],

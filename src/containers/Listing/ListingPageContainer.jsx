@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ListingPage from '../../components/PropertyListingPage/ListingPage';
+import ListingPage from '../../components/PropertyListingPage/ListingPage/ListingPage';
 
 const mapStateToProps = (state) => ({
   listingPage: state.listingPage,

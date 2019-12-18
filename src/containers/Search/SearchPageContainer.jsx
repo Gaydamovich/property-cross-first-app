@@ -13,7 +13,7 @@ const SearchPageContainer = (props) => {
   const onClickItem = (longTitle) => props.addLocalityToField(longTitle);
   const onChangeField = (value) => props.changeField(value);
   const getLocation = (name) => props.getLocations(name);
-  const getProperty = (placeName) => props.getProperties(placeName);
+  const getProperty = (placeName, longTitle) => props.getProperties(placeName, longTitle);
   return (
     <SearchPage
       recentSearches={searchPage.recentSearches}

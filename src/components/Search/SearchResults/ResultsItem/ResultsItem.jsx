@@ -15,7 +15,7 @@ const ResultsItem = (props) => {
       {to
         ? (
           <li className="search-results__items_item" aria-hidden>
-            <Link to="/listing" onClick={() => getProperty(item.placeName)}>
+            <Link to="/listing" onClick={() => getProperty(item.placeName, item.longTitle)}>
               {item.longTitle}
             </Link>
           </li>
