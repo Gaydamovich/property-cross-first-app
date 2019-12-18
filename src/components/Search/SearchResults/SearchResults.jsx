@@ -8,11 +8,12 @@ const SearchResults = (props) => {
   const {
     recentSearches, searchStatus,
     onClickItem, currentSearch,
+    getProperty,
   } = props;
   const history = recentSearches
     .map((item) => <ResultsItem key={item.id} onClickItem={onClickItem} item={item} />);
   const currentLocations = currentSearch
-    .map((item) => <ResultsItem key={item.id} onClickItem={onClickItem} item={item} />);
+    .map((item) => <ResultsItem key={item.id} getProperty={getProperty} item={item} to="/listing" />);
   const results = history.length ? history : <div>Not Found</div>;
   return (
     <div className="search-results">
@@ -31,6 +32,7 @@ SearchResults.propTypes = {
   currentSearch: PropTypes.array.isRequired,
   searchStatus: PropTypes.bool.isRequired,
   onClickItem: PropTypes.func.isRequired,
+  getProperty: PropTypes.func.isRequired,
 };
 
 export default SearchResults;

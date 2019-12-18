@@ -5,10 +5,9 @@ import {
 } from './actionsTypes/actionsTypes';
 import { SEARCH } from '../constants/constants';
 
-export const addLocalityToField = (city, street) => ({
+export const addLocalityToField = (longTitle) => ({
   type: ADD_LOCALITY_TO_FIELD_SEARCH_PAGE,
-  city,
-  street,
+  longTitle,
 });
 
 export const changeField = (value) => ({

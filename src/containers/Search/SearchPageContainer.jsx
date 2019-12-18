@@ -6,12 +6,14 @@ import {
   getLocations,
 } from '../../actions/searchPageActions';
 import SearchPage from '../../components/Search/SearchPage/SearchPage';
+import { getProperties } from '../../actions/lisingPageActions';
 
 const SearchPageContainer = (props) => {
   const { searchPage } = props;
-  const onClickItem = (city, street) => props.addLocalityToField(city, street);
+  const onClickItem = (longTitle) => props.addLocalityToField(longTitle);
   const onChangeField = (value) => props.changeField(value);
   const getLocation = (name) => props.getLocations(name);
+  const getProperty = (placeName, page) => props.getProperties(placeName, page);
   return (
     <SearchPage
       recentSearches={searchPage.recentSearches}
@@ -21,6 +23,7 @@ const SearchPageContainer = (props) => {
       onClickItem={onClickItem}
       onChangeField={onChangeField}
       getLocation={getLocation}
+      getProperty={getProperty}
     />
   );
 };
@@ -30,6 +33,7 @@ SearchPageContainer.propTypes = {
   addLocalityToField: PropTypes.func.isRequired,
   changeField: PropTypes.func.isRequired,
   getLocations: PropTypes.func.isRequired,
+  getProperties: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -40,6 +44,7 @@ const mapDispatchToProps = {
   addLocalityToField,
   changeField,
   getLocations,
+  getProperties,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPageContainer);
