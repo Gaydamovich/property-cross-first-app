@@ -4,6 +4,8 @@ const initialState = {
   placeName: '',
   longTitle: '',
   list: [],
+  page: 0,
+  totalResults: 0,
   error: null,
 };
 
@@ -13,8 +15,11 @@ const listingPage = (state = initialState, action) => {
       return {
         ...state,
         placeName: action.placeName,
-        longTitle: action.longTitle,
+        longTitle: action.payload.location.longTitle,
+        page: action.page,
+        totalResults: action.payload.totalResults,
         list: [
+          ...state.list,
           ...action.payload.properties,
         ],
       };

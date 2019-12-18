@@ -14,7 +14,9 @@ export const Item = ({ item }) => (
       {item.priceFormatted}
     </div>
     <div className="item__updating">
-      Update: first seen...
+      Update:
+      &nbsp;
+      {item.updatedInDaysFormatted}
     </div>
   </li>
 );

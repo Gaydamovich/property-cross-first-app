@@ -21,3 +21,17 @@
   margin-top: 1rem;
   padding: .7rem;
 }
+
+.listing-page__btn {
+  margin: 1rem 0 1rem 1rem;
+  padding: 1rem;
+  font-size: 1.3rem;
+  background-color: #10afe4;
+  color: #e4e4e4;
+  border-radius: .4rem;
+  outline: none;
+  &:hover {
+    cursor: pointer;
+    background-color: #0e98c6;
+  }
+}

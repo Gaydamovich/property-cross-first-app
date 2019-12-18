@@ -10,12 +10,13 @@ const ResultsItem = (props) => {
     onClickItem, to,
   } = props;
   const clickItem = () => onClickItem(item.longTitle);
+  const clickGetProperty = () => getProperty(item.placeName, 1);
   return (
     <>
       {to
         ? (
           <li className="search-results__items_item" aria-hidden>
-            <Link to="/listing" onClick={() => getProperty(item.placeName, item.longTitle)}>
+            <Link to="/listing" onClick={clickGetProperty}>
               {item.longTitle}
             </Link>
           </li>

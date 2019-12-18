@@ -5,6 +5,7 @@ import { Item } from '../Item/Item';
 
 const ListingPage = (props) => {
   const { listingPage } = props;
+  const clickBtn = () => props.getProperties(listingPage.placeName, listingPage.page + 1);
   const list = listingPage.list.map((item) => <Item key={item.id} item={item} />);
   return (
     <div className="wrapper-listing-page">
@@ -21,7 +22,7 @@ const ListingPage = (props) => {
         of
         <span className="listing-page__search_all-count" id="totalCount">
           &nbsp;
-          {listingPage.list.length * 10}
+          {listingPage.totalResults}
           &nbsp;
         </span>
         items
@@ -29,12 +30,16 @@ const ListingPage = (props) => {
       <ul className="listing-page__list-items">
         {list}
       </ul>
+      <button onClick={clickBtn} type="submit" className="listing-page__btn">
+        Load more
+      </button>
     </div>
   );
 };
 
 ListingPage.propTypes = {
   listingPage: PropTypes.object.isRequired,
+  getProperties: PropTypes.func.isRequired,
 };
 
 export default ListingPage;

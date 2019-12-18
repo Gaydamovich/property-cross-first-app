@@ -1,8 +1,8 @@
 import { GET_PROPERTIES } from './actionsTypes/actionsTypes';
 
-export const getProperties = (placeName, longTitle) => ({
+export const getProperties = (placeName, page) => ({
   type: GET_PROPERTIES,
   placeName,
-  longTitle,
-  request: () => fetch(`http://localhost:3000/locations/${placeName}/properties`),
+  page,
+  request: () => fetch(`http://localhost:3000/locations/${placeName}/properties?page=${page}`),
 });
