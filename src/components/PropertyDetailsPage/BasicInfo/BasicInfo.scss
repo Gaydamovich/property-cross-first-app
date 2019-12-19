@@ -1,0 +1,42 @@
+.basic-info {
+  display: flex;
+  align-items: flex-start;
+  padding: 1.2rem;
+  font-family: Helvetica;
+  background-color: #d1d1d1;
+  &__img {
+    width: 35%;
+    margin-right: 1.2rem;
+    img {
+      width: 100%;
+    }
+  }
+  &__description {
+    color: #585858;
+    width: 60%;
+    &_price {
+      display: inline-block;
+      padding: .5rem;
+      font-weight: bolder;
+      color: #e4e4e4;
+      background-color: #ff470e;
+    }
+  }
+  &__btn {
+    padding: .5rem;
+    background-color: rgb(73, 184, 222);
+    color: #e4e4e4;
+    font-weight: bolder;
+    border-radius: .3rem;
+    border: none;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(67, 169, 205);
+    }
+    &:active {
+      background-color: rgb(255, 255, 255);
+      color: rgb(67, 169, 205);
+    }
+  }
+}

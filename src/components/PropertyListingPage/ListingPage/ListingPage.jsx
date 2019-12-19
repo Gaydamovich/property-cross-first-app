@@ -7,7 +7,9 @@ import { Error } from '../../Error/Error';
 const ListingPage = (props) => {
   const { listingPage } = props;
   const clickBtn = () => props.getProperties(listingPage.placeName, listingPage.page + 1);
-  const list = listingPage.list.map((item) => <Item key={item.id} item={item} />);
+  const list = listingPage.list.map((item) => (
+    <Item key={item.id} item={item} getPropertyById={props.getPropertyById} />
+  ));
   return (
     <>
       {listingPage.error ? (
@@ -52,6 +54,7 @@ const ListingPage = (props) => {
 ListingPage.propTypes = {
   listingPage: PropTypes.object.isRequired,
   getProperties: PropTypes.func.isRequired,
+  getPropertyById: PropTypes.func.isRequired,
 };
 
 export default ListingPage;
