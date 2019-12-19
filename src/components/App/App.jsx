@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import FavouritesPage from '../FavouritesPage/FavouritesPage';
 import Header from '../Header/Header';
 import './App.css';
 import SearchPageContainer from '../../containers/Search/SearchPageContainer';
 import { ListingPageContainer } from '../../containers/Listing/ListingPageContainer';
 import { DetailsPageContainer } from '../../containers/Details/DetailsPageContainer';
+import { FavouritesPageContainer } from '../../containers/Favourites/FavouritesPageContainer';
 
 
 const App = () => (
@@ -19,7 +19,7 @@ const App = () => (
         <ListingPageContainer />
       </Route>
       <Route path="/details" exact component={DetailsPageContainer} />
-      <Route path="/favourites" exact component={FavouritesPage} />
+      <Route path="/favourites" exact component={FavouritesPageContainer} />
     </Switch>
   </div>
 );

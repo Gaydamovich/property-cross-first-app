@@ -4,6 +4,7 @@ const initialState = {
   property: {},
   location: {},
   loading: false,
+  favorites: JSON.parse(localStorage.getItem('favourites')) || [],
   errors: null,
 };
 

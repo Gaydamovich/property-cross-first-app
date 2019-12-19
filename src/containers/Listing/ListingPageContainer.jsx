@@ -13,6 +13,4 @@ const mapDispatchToProps = {
   getPropertyById,
 };
 
-const ListingPageContainer = connect(mapStateToProps, mapDispatchToProps)(ListingPage);
-
-export { ListingPageContainer };
+export const ListingPageContainer = connect(mapStateToProps, mapDispatchToProps)(ListingPage);

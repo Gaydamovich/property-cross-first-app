@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import DetailsPage from '../../components/PropertyDetailsPage/DetailsPage';
-import { getPropertyById } from '../../actions/detailsPageActions';
-
+import { addPropertyToFavourites, removePropertyToFavourites } from '../../actions/favouritesPageActions';
 
 const mapStateToProps = (state) => ({
   detailsPage: state.detailsPage,
+  favouritesPage: state.favouritesPage,
 });
 
 const mapDispatchToProps = {
-  getPropertyById,
+  addPropertyToFavourites,
+  removePropertyToFavourites,
 };
 
 export const DetailsPageContainer = connect(mapStateToProps, mapDispatchToProps)(DetailsPage);
