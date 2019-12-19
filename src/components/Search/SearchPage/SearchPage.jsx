@@ -7,7 +7,7 @@ const SearchPage = (props) => {
   const {
     entryField, onChangeField, recentSearches,
     searchStatus, onClickItem, getLocation,
-    currentSearch, getProperty,
+    currentSearch, getProperty, error,
   } = props;
   return (
     <div className="wrapper-search">
@@ -22,6 +22,7 @@ const SearchPage = (props) => {
         onClickItem={onClickItem}
         currentSearch={currentSearch}
         getProperty={getProperty}
+        error={error}
       />
     </div>
   );
@@ -36,6 +37,7 @@ SearchPage.propTypes = {
   onChangeField: PropTypes.func.isRequired,
   getLocation: PropTypes.func.isRequired,
   getProperty: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
 
 export default SearchPage;

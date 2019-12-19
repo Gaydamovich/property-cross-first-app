@@ -18,10 +18,16 @@ const listingPage = (state = initialState, action) => {
         longTitle: action.payload.location.longTitle,
         page: action.page,
         totalResults: action.payload.totalResults,
+        error: null,
         list: [
           ...state.list,
           ...action.payload.properties,
         ],
+      };
+    case `${GET_PROPERTIES}_REQUEST_FAILED`:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;

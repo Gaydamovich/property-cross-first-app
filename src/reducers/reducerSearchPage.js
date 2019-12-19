@@ -37,6 +37,7 @@ const searchPage = (state = initialState, action) => {
         ...state,
         entryField: '',
         loading: !state.loading,
+        error: null,
         currentSearch: [
           ...action.payload,
         ],
@@ -44,6 +45,7 @@ const searchPage = (state = initialState, action) => {
     case `${ASYNC_GET_LOCATIONS}_REQUEST_FAILED`:
       return {
         ...state,
+        entryField: '',
         error: action.payload,
       };
     default:
