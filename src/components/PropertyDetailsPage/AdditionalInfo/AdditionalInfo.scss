@@ -1,0 +1,14 @@
+.additional-info {
+  width: 70%;
+  margin: 1rem auto;
+  padding: 1rem;
+  font-family: Helvetica;
+  color: #3c3c48;
+  border: 1px solid lightgray;
+  border-radius: .4rem;
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    padding: .5rem;
+  }
+}
