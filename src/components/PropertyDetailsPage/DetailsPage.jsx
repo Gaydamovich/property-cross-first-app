@@ -4,11 +4,19 @@ import { BasicInfo } from './BasicInfo/BasicInfo';
 import { AdditionalInfo } from './AdditionalInfo/AdditionalInfo';
 
 const DetailsPage = ({ detailsPage }) => {
-  const { property, location } = detailsPage;
+  const { property, location, loading } = detailsPage;
   return (
     <>
-      <BasicInfo property={property} location={location} />
-      <AdditionalInfo property={property} />
+      {
+        loading ? (
+          <div>Loading...</div>
+        ) : (
+          <>
+            <BasicInfo property={property} location={location} />
+            <AdditionalInfo property={property} />
+          </>
+        )
+      }
     </>
   );
 };
