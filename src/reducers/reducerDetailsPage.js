@@ -1,10 +1,11 @@
-import { GET_PROPERTY_BY_ID } from '../actions/actionsTypes/actionsTypes';
+import {
+  GET_PROPERTY_BY_ID,
+} from '../actions/actionsTypes/actionsTypes';
 
 const initialState = {
   property: {},
   location: {},
   loading: false,
-  favorites: JSON.parse(localStorage.getItem('favourites')) || [],
   errors: null,
 };
 

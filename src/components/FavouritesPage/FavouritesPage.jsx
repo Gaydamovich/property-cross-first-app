@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { FavouriteItem } from './FavouriteItem/FavouriteItem';
 
 export const FavouritesPage = (props) => {
-  const { favouritesPage, getPropertyById } = props;
+  const { favouritesPage } = props;
   const listFavourites = favouritesPage.favorites.map((item) => (
-    <FavouriteItem key={item.id} item={item} getPropertyById={getPropertyById} />
+    <FavouriteItem key={item.id} item={item} />
   ));
   return (
     <div className="wrapper-favourites-page">
@@ -22,5 +22,4 @@ export const FavouritesPage = (props) => {
 
 FavouritesPage.propTypes = {
   favouritesPage: PropTypes.object.isRequired,
-  getPropertyById: PropTypes.func.isRequired,
 };

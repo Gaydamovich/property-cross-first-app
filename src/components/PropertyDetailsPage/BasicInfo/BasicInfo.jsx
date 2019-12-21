@@ -2,14 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BasicInfo.scss';
 
+const ADD_FAVOURITE = 'Add';
+const DELETE_FAVOURITE = 'Remove';
+
 export const BasicInfo = ({
   property, location, addPropertyToFavourites,
   favouritesPage, removePropertyToFavourites,
 }) => {
   const addToFavorites = () => addPropertyToFavourites(property);
   const removeToFavourites = () => removePropertyToFavourites(property);
-  const addFavorite = 'Add';
-  const deleteFavorite = 'Remove';
   const added = favouritesPage.favorites.find((el) => el.id === property.id);
   return (
     <div className="basic-info">
@@ -29,7 +30,7 @@ export const BasicInfo = ({
           type="submit"
           onClick={added ? removeToFavourites : addToFavorites}
         >
-          {added ? deleteFavorite : addFavorite}
+          {added ? DELETE_FAVOURITE : ADD_FAVOURITE}
         </button>
       </div>
     </div>
