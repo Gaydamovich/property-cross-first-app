@@ -13,8 +13,8 @@ const DetailsPageContainer = (props) => {
   } = props;
 
   useEffect(() => {
-    const { match, getPropertyById } = props;
-    getPropertyById(match.params.placeName, match.params.id);
+    const { match } = props;
+    props.getPropertyById(match.params.placeName, match.params.id);
   }, []);
 
   return (

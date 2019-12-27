@@ -8,7 +8,7 @@ const ResultsItem = (props) => {
   const {
     item, onClickItem, to,
   } = props;
-  const clickItem = () => onClickItem(item.longTitle);
+  const clickItem = () => onClickItem(item.value);
   return (
     <>
       {to
@@ -22,7 +22,12 @@ const ResultsItem = (props) => {
           </li>
         ) : (
           <li className="search-results__items_item" onClick={clickItem} aria-hidden>
-            {item.longTitle}
+            Search
+            &nbsp;
+            {item.value}
+            : (
+            {item.length}
+            )
           </li>
         )}
     </>

@@ -6,12 +6,12 @@ import ListingPage from '../../components/PropertyListingPage/ListingPage/Listin
 import { getProperties, resetProperties } from '../../actions/lisingPageActions';
 
 const ListingPageContainer = (props) => {
-  const { listingPage, getProperties } = props;
+  const { listingPage } = props;
 
   useEffect(() => {
-    const { match, getProperties, resetProperties } = props;
-    getProperties(match.params.placeName, 1);
-    return () => resetProperties();
+    const { match } = props;
+    props.getProperties(match.params.placeName, 1);
+    return () => props.resetProperties();
   }, []);
 
   return <ListingPage listingPage={listingPage} getProperties={getProperties} />;

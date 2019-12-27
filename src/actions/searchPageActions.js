@@ -1,4 +1,5 @@
 import '@babel/polyfill';
+import { v4 } from 'uuid';
 import {
   ADD_LOCALITY_TO_FIELD_SEARCH_PAGE, ASYNC_GET_LOCATIONS,
   CHANGE_FIELD_SEARCH_PAGE,
@@ -15,12 +16,18 @@ export const changeField = (value) => ({
   payload: value,
 });
 
-export const getLocations = (value) => {
-  const word = value.split(', ');
-  const valueSearch = word.length > 1 ? word[1] : word[0];
-  return {
-    type: ASYNC_GET_LOCATIONS,
-    request: () => fetch(`http://localhost:3000/locations/searchByName?placeName=${valueSearch}`),
-    onSuccess: (data) => localStorage.setItem(SEARCH, JSON.stringify(data)),
-  };
-};
+export const getLocations = (value) => ({
+  type: ASYNC_GET_LOCATIONS,
+  request: () => fetch(`http://localhost:3000/locations/searchByName?placeName=${value}`),
+  onSuccess: (data) => {
+    const resultItem = {
+      id: v4(),
+      value,
+      length: data.length,
+    };
+    const results = JSON.parse(localStorage.getItem(SEARCH)) || [];
+    results.push(resultItem);
+    if (results.length > 4) results.shift();
+    localStorage.setItem(SEARCH, JSON.stringify(results));
+  },
+});
